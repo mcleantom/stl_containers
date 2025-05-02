@@ -5,15 +5,15 @@
 namespace tom {
 
 template<typename T>
-class Vector {
+class vector {
 public:
-    Vector()
+    vector()
         : size_(0)
         , reserved_(0)
         , items_(nullptr)
     {}
 
-    Vector(size_t n)
+    vector(size_t n)
         : size_(n)
         , reserved_(n)
         , items_(new T[n])
@@ -23,7 +23,7 @@ public:
         }
     }
 
-    Vector(size_t n, const T& default_value)
+    vector(size_t n, const T& default_value)
         : size_(n)
         , reserved_(n)
         , items_(new T[n])
@@ -33,10 +33,10 @@ public:
         }
     }
 
-    ~Vector() { delete[] items_; }
+    ~vector() { delete[] items_; }
 
     // Copy constructor
-    Vector(const Vector& other)
+    vector(const vector& other)
         : size_(other.size_)
         , reserved_(other.reserved_)
         , items_(new T[other.reserved_])
@@ -46,7 +46,7 @@ public:
         }
     }
     
-    Vector(Vector&& other)
+    vector(vector&& other)
         : size_(other.size_)
         , reserved_(other.reserved_)
         , items_(other.items_)
@@ -56,7 +56,7 @@ public:
         other.reserved_ = 0;
     }
 
-    Vector& operator=(Vector& other) noexcept
+    vector& operator=(vector& other) noexcept
     {
         if (this != &other) {
             delete[] items_;
@@ -67,7 +67,7 @@ public:
         return *this;
     }
 
-    Vector& operator=(Vector&& other) noexcept {
+    vector& operator=(vector&& other) noexcept {
         if (this != &other) {
             delete[] items_;
             items_ = std::exchange(other.items_, nullptr);
