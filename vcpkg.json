@@ -1,0 +1,8 @@
+{
+    "name": "hftpatterns",
+    "version-string": "1.0.0",
+    "description": "Testing HFT performance patterns",
+    "dependencies": [
+        "gtest"
+    ]
+}
